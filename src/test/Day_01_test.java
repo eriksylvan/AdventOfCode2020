@@ -23,6 +23,16 @@ public class Day_01_test extends TestCase {
     }
 
     @Test
+    public void testPartTwo_1() {
+        Integer[] input = { 1721, 979, 366, 299, 675, 1456 };
+        ArrayList<Integer> indata = new ArrayList<Integer>(Arrays.asList(input));
+
+        int expected = 241861950;
+        int actual = day1.day01PartTwo(indata);
+        assertEquals("expected: " + expected + " actual: " + actual, actual, expected);
+    }
+
+    @Test
     public void testSolutionPartOne() {
         ArrayList<Integer> inp = day1.getInputData();
         int expected = 259716;
@@ -33,7 +43,7 @@ public class Day_01_test extends TestCase {
     @Test
     public void testSolutionPartTwo() {
         ArrayList<Integer> inp = day1.getInputData();
-        int expected = 558;
+        int expected = 120637440;
         int actual = day1.day01PartTwo(inp);
 
         assertEquals("expected: " + expected + " actual: " + actual, actual, expected);
