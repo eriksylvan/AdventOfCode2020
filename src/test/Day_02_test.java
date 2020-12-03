@@ -46,7 +46,7 @@ public class Day_02_test extends TestCase {
     public void testSolutionPartOne() {
         ArrayList<String> inp = day_02.getInputData();
         int expected = 586;
-        int actual = day_02.day02PartTwo(inp);
+        int actual = day_02.day02PartOne(inp);
 
         assertEquals("expected: " + expected + " actual: " + actual, actual, expected);
 

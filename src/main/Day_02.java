@@ -99,3 +99,9 @@ public class Day_02 {
         System.out.println("Solution Part two: " + answer2 + "\n\n");
     }
 }
+/*
+Advent of code 2020, Day 02
+
+Solution Part one: 586
+Solution Part two: 352
+*/
