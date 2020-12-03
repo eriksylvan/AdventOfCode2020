@@ -25,5 +25,28 @@ public class Day_03_test extends TestCase {
         long actual = day_03.day03PartTwo();
         assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
     }
+
+
+    @Test
+    public void testSolutionPartOne() {
+        day_03.getInputData();
+        int expected = 200;
+        int actual = day_03.day03PartOne();
+
+        assertEquals("expected: " + expected + " actual: " + actual, actual, expected);
+
+
+        
+    }
+    @Test
+    public void testSolutionPartTwo() {
+        day_03.getInputData();
+        long expected = 3737923200L;
+        long actual = day_03.day03PartTwo();
+        assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
+    }
+
+
+
 }
 
