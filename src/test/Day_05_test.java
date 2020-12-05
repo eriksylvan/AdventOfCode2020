@@ -24,4 +24,13 @@ public class Day_05_test extends TestCase {
         int actual = day_05.day05PartOne();
         assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
     }
+
+    @Test
+    public void testSolutionPartTwo() {
+
+        day_05.getInputData();
+        int expected = 597;
+        int actual = day_05.day05PartTwo();
+        assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
+    }
 }

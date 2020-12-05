@@ -84,7 +84,7 @@ public class Day_04 {
                 eyr = (ieyr >= 2020 && ieyr <= 2030);
                 String hgt_str = passPort.get("hgt");
                 Pattern p = Pattern.compile("^(\\d*)(cm|in)$");
-                Matcher m = p.matcher(passPort.get("hgt"));
+                Matcher m = p.matcher(hgt_str);
                 if (m.matches()) {
                     int hgt_val = Integer.parseInt(m.group(1));
                     String hgt_unit = m.group(2);

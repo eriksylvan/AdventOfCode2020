@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -22,16 +23,6 @@ public class Day_05 {
 
     }
 
-    public int day05PartOne() {
-        int maxSeatID = -1;
-        for (String seat : this.seatsBinary) {
-            int seatID = seatId(seat);
-            maxSeatID = (seatID > maxSeatID) ? seatID : maxSeatID;
-        }
-
-        return maxSeatID;
-    }
-
     public int seatId(String seat) {
         String row = seat.substring(0, 7);
         String col = seat.substring(7, 10);
@@ -44,9 +35,31 @@ public class Day_05 {
         return seatID;
     }
 
+    public int day05PartOne() {
+        int maxSeatID = -1;
+        for (String seat : this.seatsBinary) {
+            int seatID = seatId(seat);
+            maxSeatID = (seatID > maxSeatID) ? seatID : maxSeatID;
+        }
+
+        return maxSeatID;
+    }
+
     public int day05PartTwo() {
-        int sum = 0;
-        return sum;
+
+        List<Integer> occupied = new ArrayList<Integer>();
+        for (String seat : this.seatsBinary) {
+            occupied.add(seatId(seat));
+        }
+        occupied.sort(null);
+        int i = occupied.get(0);
+        for (int s : occupied) {
+            if (i != s)
+                return i;
+            i++;
+        }
+
+        return -1;
     }
 
     public static void main(String[] args) {
@@ -54,7 +67,7 @@ public class Day_05 {
         int answer1, answer2;
         day_05.getInputData();
         answer1 = day_05.day05PartOne();
-        //System.out.println(day_05.seatsBinary);
+        // System.out.println(day_05.seatsBinary);
         answer2 = day_05.day05PartTwo();
         System.out.println("\n\nAdvent of code 2020, Day 05\n");
         System.out.println("Solution Part one: " + answer1);
