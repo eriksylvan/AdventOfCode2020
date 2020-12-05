@@ -2,16 +2,15 @@ package main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import sun.jvm.hotspot.tools.jcore.ByteCodeRewriter;
-
 /**
  * Day_04
+ * https://adventofcode.com/2020/day/4
  */
+
 public class Day_04 {
 
     protected ArrayList<String> pass;
@@ -40,8 +39,6 @@ public class Day_04 {
         return valid;
     }
 
-
-
     private void buildPassDB() {
         HashMap<String, String> passPort = new HashMap<String, String>();
         for (String row : this.pass) {
@@ -61,7 +58,6 @@ public class Day_04 {
         }
     }
 
-
     public int day04PartOne() {
         int validCount = 0;
         for (HashMap<String, String> passPort : this.passPorts) {
@@ -78,47 +74,46 @@ public class Day_04 {
         int validCount = 0;
         for (HashMap<String, String> passPort : this.passPorts) {
             // Check passport valid
+            boolean byr = false, iyr = false, eyr = false, hgt = false, hcl = false, ecl = false, pid = false;
             if (validPassport(passPort)) {
                 int ibyr = Integer.parseInt(passPort.get("byr"));
-                boolean byr = (ibyr>=1920 && ibyr<=2002 );
+                byr = (ibyr >= 1920 && ibyr <= 2002);
                 int iiyr = Integer.parseInt(passPort.get("iyr"));
+                iyr = (iiyr >= 2010 && iiyr <= 2020);
                 int ieyr = Integer.parseInt(passPort.get("eyr"));
-                Pattern p = Pattern.compile("(\\d*)(cm|in)");
+                eyr = (ieyr >= 2020 && ieyr <= 2030);
+                String hgt_str = passPort.get("hgt");
+                Pattern p = Pattern.compile("^(\\d*)(cm|in)$");
                 Matcher m = p.matcher(passPort.get("hgt"));
-                int hgt_val = Integer.parseInt(m.group(1));
-                int max_unit = Integer.parseInt(m.group(2));
-                boolean hcl = Pattern.compile("^#[abcdef1234567890]{6}$")
-                    .matcher(passPort.get("hcl"))
-                    .matches();
-                boolean ecl = Pattern.compile("^(amb|blu|brn|gry|grn|hzl|oth)$")
-                    .matcher(passPort.get("ecl"))
-                    .matches();
-                boolean pid = Pattern.compile("^[\d]{9}$")
-                    .matcher(passPort.get("pid"))
-                    .matches();
+                if (m.matches()) {
+                    int hgt_val = Integer.parseInt(m.group(1));
+                    String hgt_unit = m.group(2);
+                    switch (hgt_unit) {
+                        case "cm":
+                            if (hgt_val >= 150 && hgt_val <= 193)
+                                hgt = true;
+                            break;
+                        case "in":
+                            if (hgt_val >= 59 && hgt_val <= 76)
+                                hgt = true;
+                            break;
+                        default:
+                            hgt = false;
+                            break;
+                    }
+                } else {
+                    hgt = false;
+                }
 
-
+                hcl = Pattern.compile("^#[abcdef1234567890]{6}$").matcher(passPort.get("hcl")).matches();
+                ecl = Pattern.compile("^(amb|blu|brn|gry|grn|hzl|oth)$").matcher(passPort.get("ecl")).matches();
+                pid = Pattern.compile("^[\\d]{9}$").matcher(passPort.get("pid")).matches();
             }
+            if (byr && iyr && eyr && hgt && hcl && ecl && pid)
+                validCount++;
+
         }
-
-/*
-        Pattern p = Pattern.compile("(\\d*)-(\\d*) (.): ([a-z]*)");
-            Matcher m = p.matcher(str);
         return validCount;
-        byr (Birth Year) - four digits; at least 1920 and at most 2002.
-iyr (Issue Year) - four digits; at least 2010 and at most 2020.
-eyr (Expiration Year) - four digits; at least 2020 and at most 2030.
-hgt (Height) - a number followed by either cm or in:
-If cm, the number must be at least 150 and at most 193.
-If in, the number must be at least 59 and at most 76.
-hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
-ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
-pid (Passport ID) - a nine-digit number, including leading zeroes.
-cid (Country ID) - ignored, missing or not.
-
-*/
-int sum = 0;
-        return sum;
     }
 
     public static void main(String[] args) {
@@ -134,3 +129,12 @@ int sum = 0;
         System.out.println("Solution Part two: " + answer2 + "\n\n");
     }
 }
+
+
+/*
+
+Advent of code 2020, Day 04
+
+Solution Part one: 204
+Solution Part two: 179
+*/
