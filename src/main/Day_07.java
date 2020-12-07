@@ -33,51 +33,39 @@ public class Day_07 {
             bagRules.add(inputScanner.nextLine());
         }
         inputScanner.close();
-        // System.out.println(bagRules);
-    }
-
-    public int day07PartOne() {
-        int count = 0;
-        int found = 0;
-        for (String str : this.bagRules)
-        {
-            
+        for (String str : this.bagRules) {
             String[] cr = str.split(" bags contain ");
-
             String color = cr[0];
             List<BagContent<String, Integer>> bagContentList = new ArrayList<BagContent<String, Integer>>();
 
             if (cr[1].startsWith("no", 0)) {
                 System.out.println(color + ": No other bags inside");
-
             } else {
                 String[] contains = cr[1].split(", ");
-                //System.out.println(color + ": " + contains.length);
-
                 for (String s : contains) {
                     String[] containSplit = s.split(" ");
                     Integer n = Integer.parseInt(containSplit[0]);
                     String col = containSplit[1] + " " + containSplit[2];
-                    //System.out.println(n + " : " + col);
-
                     bagContentList.add(new BagContent<String, Integer>(col, n));
                 }
-               
             }
-             this.colorMap.put(color, bagContentList);
-            //System.out.println("------");
+            this.colorMap.put(color, bagContentList);
         }
+    }
+
+    public int day07PartOne() {
+        int count = 0;
+        int found = 0;
 
         for (String c : colorMap.keySet()) {
             count++;
-            //System.out.println(c);
+            // System.out.println(c);
             if (containsShinyGold(c)) {
-                System.out.println(c +  " kan innehålla ShinyGold. ");
+                // System.out.println(c + " can contain ShinyGold. ");
                 found++;
             }
         }
-
-        System.out.print("Count: "+ count);
+        System.out.print("Count: " + count);
         return found;
     }
 
@@ -97,8 +85,22 @@ public class Day_07 {
     }
 
     public int day07PartTwo() {
-        int sum = 0;
-        return sum;
+        return countBagsInBag("shiny gold");
+    }
+
+    private int countBagsInBag(String bagColor) {
+        int noOfBags = 0;
+        List<BagContent<String, Integer>> childBags = colorMap.get(bagColor);
+        if (childBags.size() > 0) {
+            for (BagContent<String, Integer> childBag : childBags) {
+                // add number of bags + th bags in that bag
+                noOfBags += (childBag.number * (1 + countBagsInBag(childBag.color)));
+            }
+        } else {
+            noOfBags = 0;
+        }
+
+        return noOfBags;
     }
 
     public static void main(String[] args) {
@@ -113,3 +115,9 @@ public class Day_07 {
         System.out.println("Solution Part two: " + answer2 + "\n\n");
     }
 }
+
+/*
+ * Advent of code 2020, Day 07
+ * 
+ * Solution Part one: 233 Solution Part two: 421550
+ */
