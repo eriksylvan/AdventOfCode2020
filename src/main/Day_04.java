@@ -20,7 +20,7 @@ public class Day_04 {
 
     public void getInputData() {
         Scanner inputScanner;
-        inputScanner = new Scanner(Day_04.class.getResourceAsStream(inputFile));
+        inputScanner = new Scanner(Day_05.class.getResourceAsStream(inputFile));
         this.pass = new ArrayList<>();
         while (inputScanner.hasNextLine()) {
             pass.add(inputScanner.nextLine());

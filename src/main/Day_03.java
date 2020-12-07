@@ -13,7 +13,7 @@ public class Day_03 {
 
     public ArrayList<String> getInputData() {
         Scanner inputScanner;
-        inputScanner = new Scanner(Day_02.class.getResourceAsStream(inputFile));
+        inputScanner = new Scanner(Day_03.class.getResourceAsStream(inputFile));
         ArrayList<String> inp = new ArrayList<>();
         while (inputScanner.hasNextLine()) {
             inp.add(inputScanner.nextLine());

@@ -14,7 +14,7 @@ public class Day_05 {
 
     public void getInputData() {
         Scanner inputScanner;
-        inputScanner = new Scanner(Day_04.class.getResourceAsStream(inputFile));
+        inputScanner = new Scanner(Day_05.class.getResourceAsStream(inputFile));
         this.seatsBinary = new ArrayList<>();
         while (inputScanner.hasNextLine()) {
             seatsBinary.add(inputScanner.nextLine());
