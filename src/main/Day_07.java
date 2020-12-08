@@ -39,7 +39,7 @@ public class Day_07 {
             List<BagContent<String, Integer>> bagContentList = new ArrayList<BagContent<String, Integer>>();
 
             if (cr[1].startsWith("no", 0)) {
-                System.out.println(color + ": No other bags inside");
+                //System.out.println(color + ": No other bags inside");
             } else {
                 String[] contains = cr[1].split(", ");
                 for (String s : contains) {
