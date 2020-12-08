@@ -18,10 +18,27 @@ public class Day_08_test extends TestCase {
     }
 
     @Test
+    public void testPartTwo_1() {
+        day_08.inputFile = "input\\input_08_test.txt";
+        day_08.getInputData();
+        int expected = 8;
+        int actual = day_08.day08PartTwo();
+        assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
+    }
+
+    @Test
     public void testSolutionPartOne() {
         day_08.getInputData();
         int expected = 1548;
         int actual = day_08.day08PartOne();
+        assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
+    }
+
+    @Test
+    public void testSolutionPartTwo() {
+        day_08.getInputData();
+        int expected = 1375;
+        int actual = day_08.day08PartTwo();
         assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
     }
 }
