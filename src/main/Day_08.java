@@ -11,17 +11,14 @@ public class Day_08 {
 
     public String inputFile = "input\\input_08.txt";
     List<Instruction> bootCode = new ArrayList<Instruction>();
-    List<Instruction> bootCode2 = new ArrayList<Instruction>();
 
     public class Instruction {
         public String op;
         public int arg;
-        public int visited;
 
         private Instruction(String operation, int argument) {
             this.op = operation;
             this.arg = argument;
-            this.visited = 0;
         }
 
         @Override
@@ -37,7 +34,6 @@ public class Day_08 {
             String op = inputScanner.next();
             int arg = inputScanner.nextInt();
             bootCode.add(new Instruction(op, arg));
-            bootCode2.add(new Instruction(op, arg));
         }
         inputScanner.close();
     }
@@ -46,14 +42,16 @@ public class Day_08 {
         int nextPos = 0;
         int accumulator = 0;
         boolean infiniteLoop = false;
+        int[] visited = new int[this.bootCode.size()];
 
         while (!infiniteLoop) {
             Instruction instr = this.bootCode.get(nextPos);
-            if (instr.visited == 1) {
+
+            if (visited[nextPos] == 1) {
                 infiniteLoop = true;
                 break;
             }
-
+            visited[nextPos]++;
             switch (instr.op) {
                 case "nop": // No operation
                     nextPos++;
@@ -71,9 +69,7 @@ public class Day_08 {
                 default:
                     break;
             }
-            instr.visited++;
         }
-
         return accumulator;
     }
 
@@ -81,13 +77,11 @@ public class Day_08 {
         int nextPos = 0;
         int accumulator = 0;
         int[] visited = new int[prog.size()];
-        boolean infiniteLoop = false;
-        while (!infiniteLoop) {
-            
+        while (true) {
+
             Instruction instr = prog.get(nextPos);
             int currentPos = nextPos;
             if (visited[nextPos] == 1) {
-                infiniteLoop = true;
                 throw new Exception("Infinite loop. Accumulator: " + Integer.toString(accumulator));
             }
             visited[nextPos]++;
@@ -108,41 +102,34 @@ public class Day_08 {
                 default:
                     break;
             }
-            if ((nextPos==prog.size()) && (currentPos==prog.size()-1))
+            if ((nextPos == prog.size()) && (currentPos == prog.size() - 1))
                 break; // Last instruction found
-            instr.visited++;
-            
         }
-
         return accumulator;
     }
 
     public int day08PartTwo() {
-        int accumulator = 0;
-        for (int i = 0; i<this.bootCode2.size();i++)
-        {
-            if (this.bootCode2.get(i).op.equals("nop"))
-            {
-                this.bootCode2.get(i).op = "jmp";
+        for (int i = 0; i < this.bootCode.size(); i++) {
+            if (this.bootCode.get(i).op.equals("nop")) {
+                this.bootCode.get(i).op = "jmp";
                 try {
-                    return runProgram(this.bootCode2);
-                   
+                    return runProgram(this.bootCode);
+
                 } catch (Exception e) {
-                    //TODO: handle exception
+                    // TODO: handle exception
                 }
-                this.bootCode2.get(i).op = "nop";
-                 
+                this.bootCode.get(i).op = "nop";
+
             }
-            if (this.bootCode2.get(i).op.equals("jmp"))
-            {
-                this.bootCode2.get(i).op = "nop";
+            if (this.bootCode.get(i).op.equals("jmp")) {
+                this.bootCode.get(i).op = "nop";
                 try {
-                    return runProgram(this.bootCode2);
-                    
+                    return runProgram(this.bootCode);
+
                 } catch (Exception e) {
-                    //TODO: handle exception
+                    // TODO: handle exception
                 }
-                this.bootCode2.get(i).op = "jmp";                 
+                this.bootCode.get(i).op = "jmp";
             }
         }
         return -1;
@@ -161,11 +148,9 @@ public class Day_08 {
     }
 }
 
-
-/*abstract
-Advent of code 2020, Day 08
-
-Solution Part one: 1548
-Solution Part two: 1375
-
-*/
+/*
+ * abstract Advent of code 2020, Day 08
+ * 
+ * Solution Part one: 1548 Solution Part two: 1375
+ * 
+ */
