@@ -1,6 +1,9 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -8,18 +11,19 @@ import java.util.Scanner;
  */
 public class Day_XX {
 
-    String inputFile = "input\\input_XX.txt";
-
-    public ArrayList<Integer> getInputData() {
+    public String inputFile = "input\\input_XX.txt";
+    ArrayList<String> bagRules = new ArrayList<String>();
+   
+    public void getInputData() {
         Scanner inputScanner;
         inputScanner = new Scanner(Day_XX.class.getResourceAsStream(inputFile));
-        ArrayList<Integer> inp = new ArrayList<>();
-        while (inputScanner.hasNextInt()) {
-            inp.add(inputScanner.nextInt());
+        this.bagRules = new ArrayList<>();
+        while (inputScanner.hasNextLine()) {
+            bagRules.add(inputScanner.nextLine());
         }
         inputScanner.close();
-        return inp;
     }
+
 
     public int dayXXPartOne() {
         int sum = 0;
