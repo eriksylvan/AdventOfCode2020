@@ -23,7 +23,7 @@ public class Day_10 {
     }
 
     public int day10PartOne() {
-        for (Integer i : adapters) {
+        
         int three = 0;
         int one = 0;
 
@@ -33,7 +33,6 @@ public class Day_10 {
                 a = adapters.get(i);
             } else {
                 a = adapters.get(i) - adapters.get(i - 1);
-                System.out.println(a);
             }
             if (a == 1)
                 one++;
@@ -46,14 +45,14 @@ public class Day_10 {
         return one * three;
     }
 
-    public int day10PartTwo() {
+    public long day10PartTwo() {
 
         
 
         this.adapters.add(this.adapters.get(this.adapters.size()-1)+3); // adding sevice
         this.adapters.add(0);
         this.adapters.sort(null);
-        long()
+        
         return connectAdaptor(0);
     }
 

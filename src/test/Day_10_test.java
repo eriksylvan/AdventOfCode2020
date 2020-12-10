@@ -31,8 +31,8 @@ public class Day_10_test extends TestCase {
     public void testPartTwo_1() {
         day_10.inputFile = "input\\input_10_test1.txt";
         day_10.getInputData();
-        int expected = 8;
-        int actual = day_10.day10PartTwo();
+        long expected = 8L;
+        long actual = day_10.day10PartTwo();
         assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
     }
 
@@ -40,8 +40,17 @@ public class Day_10_test extends TestCase {
     public void testPartTwo_2() {
         day_10.inputFile = "input\\input_10_test2.txt";
         day_10.getInputData();
-        int expected = 19208;
-        int actual = day_10.day10PartTwo();
+        long expected = 19208L;
+        long actual = day_10.day10PartTwo();
+        assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
+    }
+
+    @Test
+    public void testSolutionPartOne() {
+        day_10.inputFile = "input\\input_10.txt";
+        day_10.getInputData();
+        int expected = 2664;
+        int actual = day_10.day10PartOne();
         assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
     }
 
