@@ -116,7 +116,7 @@ public class Day_08 {
                     return runProgram(this.bootCode);
 
                 } catch (Exception e) {
-                    // TODO: handle exception
+                    // Program corrupt
                 }
                 this.bootCode.get(i).op = "nop";
 
@@ -127,7 +127,7 @@ public class Day_08 {
                     return runProgram(this.bootCode);
 
                 } catch (Exception e) {
-                    // TODO: handle exception
+                    // Program corrupt
                 }
                 this.bootCode.get(i).op = "jmp";
             }

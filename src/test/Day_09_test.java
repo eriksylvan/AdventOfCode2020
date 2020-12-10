@@ -28,7 +28,7 @@ public class Day_09_test extends TestCase {
 
 
     @Test
-    public void testSolutionOne_1() {
+    public void testSolutionOne() {
         day_09.getInputData();
         long expected = 21806024L;
         long actual = day_09.day09PartOne(25);
@@ -36,7 +36,7 @@ public class Day_09_test extends TestCase {
     }
 
     @Test
-    public void testSolutionTwo_1() {
+    public void testSolutionTwo() {
         day_09.getInputData();
         long expected = 2986195L;
         long actual = day_09.day09PartTwo(21806024L);

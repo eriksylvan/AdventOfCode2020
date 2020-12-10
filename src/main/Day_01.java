@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class Day_01 {
 
-    String inputFile = "input/input_01.txt";
+    public String inputFile = "input\\input_01.txt";
 
     public ArrayList<Integer> getInputData() {
         Scanner inputScanner;
