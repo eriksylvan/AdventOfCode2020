@@ -54,5 +54,15 @@ public class Day_10_test extends TestCase {
         assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
     }
 
+
+    @Test
+    public void testSolutionParTwo() {
+
+        day_10.getInputData();
+        long expected = 148098383347712L;
+        long actual = day_10.day10PartTwo();
+        assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
+    }
+
 }
 
