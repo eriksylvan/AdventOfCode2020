@@ -64,8 +64,10 @@ public class Day_13 {
         /*
         Get some inspiration for Reddit:
         MissMormie
-https://github.com/MissMormie/adventOfCode2020/blob/main/src/main/java/days/Day13_ShuttleSearch.java
-
+        https://github.com/MissMormie/adventOfCode2020/blob/main/src/main/java/days/Day13_ShuttleSearch.java
+        answer A: 8063
+        answer B: 775230782877242
+        Execution time in milliseconds : 88316
         */
         int sum = 0;
         return sum;
