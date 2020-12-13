@@ -10,11 +10,20 @@ public class Day_13_test extends TestCase {
 
     @Test
     public void testPartOne_1() {
-        //Integer[] input = { +1, -2, +3, +1 };
-        //ArrayList<Integer> indata = new ArrayList<Integer>(Arrays.asList(input));
-
-        int expected = 9999;
+        day_13.inputFile = "input\\input_13_test.txt";
+        day_13.getInputData();
+        int expected = 295;
         int actual = day_13.day13PartOne();
+        assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
+    }
+
+
+    @Test
+    public void testPartTwo_1() {
+        day_13.inputFile = "input\\input_13_test.txt";
+        day_13.getInputData();
+        int expected = 1068788;
+        int actual = day_13.day13PartTwo();
         assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
     }
 }
