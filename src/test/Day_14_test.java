@@ -12,8 +12,17 @@ public class Day_14_test extends TestCase {
     public void testPartOne_1() {
         day_14.inputFile = "input\\input_14_test.txt";
         day_14.getInputData();
-        int expected = 9999;
-        int actual = day_14.day14PartOne();
+        long expected = 165L;
+        long actual = day_14.day14PartOne();
+        assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
+    }
+
+    @Test
+    public void testSolutionPartOne() {
+        day_14.inputFile = "input\\input_14.txt";
+        day_14.getInputData();
+        long expected = 8471403462063L;
+        long actual = day_14.day14PartOne();
         assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
     }
 }
