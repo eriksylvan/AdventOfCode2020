@@ -26,22 +26,23 @@ public class Day_15 {
         HashMap<Integer, Integer[]> game = new HashMap<Integer, Integer[]>();
         // Hash map: game = SpokenNumber -> {lastTurn, age}
         int nr = 0, newnr = 0;
-        for (int t = 1; t <= endTurn; t++) {
-            if (t <= input.length) {
-                game.put(input[t - 1], new Integer[] { t, 0 });
-                newnr = input[t - 1];
-            } else {
-                newnr = game.get(nr)[1];
-            }
+
+        int l = input.length;
+        for (int t = 1; t <= l; t++) {
+            game.put(input[t - 1], new Integer[] { t, 0 });
+        }
+        nr = input[l - 1];
+        for (int t = l + 1; t <= endTurn; t++) {
+            newnr = game.get(nr)[1];
             // if new number add to list with age 0
-            if (game.containsKey(newnr)) {     
+            if (game.containsKey(newnr)) {
                 game.get(newnr)[1] = t - game.get(newnr)[0];
-                game.get(newnr)[0] = t;  
+                game.get(newnr)[0] = t;
             } else {
                 game.put(newnr, new Integer[] { t, 0 });
             }
             nr = newnr;
-            //System.out.println("Turn: " + t + " -> " + newnr);
+            // System.out.println("Turn: " + t + " -> " + newnr);
         }
         return newnr;
     }
@@ -55,7 +56,7 @@ public class Day_15 {
         Day_15 day_15 = new Day_15();
         int answer1, answer2;
         // ArrayList<Integer> inp = day_15.getInputData();
-        int inp[] = { 0,1,5,10,3,12,19 };
+        int inp[] = { 0, 1, 5, 10, 3, 12, 19 };
         answer1 = day_15.day15PartOne(inp, 2020);
 
         answer2 = day_15.day15PartOne(inp, 30000000);
@@ -65,11 +66,8 @@ public class Day_15 {
     }
 }
 
-
 /*
-Advent of code 2020, Day 15
-
-Solution Part one: 1373
-Solution Part two: 112458
-*/
-
+ * Advent of code 2020, Day 15
+ * 
+ * Solution Part one: 1373 Solution Part two: 112458
+ */

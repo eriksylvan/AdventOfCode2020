@@ -16,6 +16,7 @@ public class Day_15_test extends TestCase {
         assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
     }
 
+    @Test
     public void testPartOne_2() {
         int inp[] = {1,3,2};
         int expected = 1;
@@ -23,6 +24,7 @@ public class Day_15_test extends TestCase {
         assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
     }
 
+    @Test
     public void testPartOne_3() {
         int inp[] = {3,1,2};
         int expected = 1836;
