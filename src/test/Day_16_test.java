@@ -19,6 +19,16 @@ public class Day_16_test extends TestCase {
     }
 
     @Test
+    public void testPartTwo_1() {
+        day_16.inputFile = "input\\input_16_test2.txt";
+        day_16.getInputData();
+        
+        long expected = 71;
+        long actual = day_16.day16PartTwo();
+        assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
+    }
+
+    @Test
     public void testSolutionPartOne() {
         day_16.getInputData();
         int expected = 28873;
