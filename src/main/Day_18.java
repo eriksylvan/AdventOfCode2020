@@ -24,18 +24,6 @@ public class Day_18 {
         inputScanner.close();
     }
 
-    public long day18PartOne() {
-        long sum = 0;
-        int i =0;
-        for (String string : expressions) {
-            i++;
-            long a = calculate(string);
-            sum += a;
-        }
-        System.out.println(i);
-        return sum;
-    }
-
     public long calculate(String exp) {
 
         String pf = ShuntingYard.postfix(exp);
@@ -46,7 +34,7 @@ public class Day_18 {
     static class ShuntingYard {
 
         private enum Operator {
-            ADD(1), SUBTRACT(1), MULTIPLY(1), DIVIDE(1);
+            ADD(1), SUBTRACT(1), MULTIPLY(2), DIVIDE(1);
 
             final int precedence;
 
@@ -76,8 +64,8 @@ public class Day_18 {
             for (Character token : infix.toCharArray()) {
                 // operator
                 if (ops.containsKey(token)) {
-                    while ( ! stack.isEmpty() && isHigerPrec(token, stack.peek()))
-                    //while (!stack.isEmpty())
+                    // while ( ! stack.isEmpty() && isHigerPrec(token, stack.peek()))
+                    while (!stack.isEmpty() && ops.containsKey(stack.peek()))
                         output.append(stack.pop());
                     stack.push(token);
 
@@ -113,8 +101,8 @@ public class Day_18 {
                 if (!ops.containsKey(token)) {
                     stack.push(token.toString());
                 } else {
-                    int a = Integer.valueOf(stack.pop());
-                    int b = Integer.valueOf(stack.pop());
+                    long a = Long.valueOf(stack.pop());
+                    long b = Long.valueOf(stack.pop());
                     switch (ops.get(token)) {
                         case ADD:
                             stack.push(String.valueOf(a + b));
@@ -139,70 +127,33 @@ public class Day_18 {
         }
 
     }
-    /*
-     * Så länge det finns symboler att läsa: Läs en symbol. Om symbolen är ett tal,
-     * lägg till den i slutet av utdatakön. Om symbolen är en funktionssymbol, lägg
-     * till den på stacken. Om symbolen är en avskiljare för funktionsargument
-     * (vanligtvis ett komma): Hämta operatorer från stacken och lägg till utdatakön
-     * tills symbolen högst upp på stacken är en vänsterparentes. Om ingen
-     * vänsterparentes hittas så var avskiljaren felplacerad eller så matchar inte
-     * uttryckets parenteser varandra. Om symbolen är en operator, o1: Medan det
-     * finns en operator, o2, högst upp på stacken och antingen: o1 är associativ
-     * eller vänsterassociativ och dess prioritet är lägre än eller lika med o2s
-     * prioritet, eller o1 är högerassociativ och dess prioritet är mindre än o2s,
-     * hämta o2 från stacken och lägg den på utdatakön lägg o1 på stacken. Om
-     * symbolen är en vänsterparentes, lägg den på stacken. Om symbolen är en
-     * högerparentes: Tills den översta symbolen på stacken är en vänsterparentes,
-     * hämta operatorer från stacken och lägg dem i utdatakön. Hämta
-     * vänsterparentesen från stacken, men lägg den inte i utdatakön. Om symbolen
-     * högst upp på stacken är en funktionssymbol, lägg den i utdatakön. Om stacken
-     * tar slut och ingen vänsterparentes har hittats så matchar inte parenteserna i
-     * uttrycket varandra. När alla symboler har lästs in: Medan det finns
-     * operatorsymboler på stacken: Om operatorsymbolen högst upp på stacken är en
-     * parentes så matchar inte uttryckets parenteser varandra. Lägg operatorn i
-     * utdatakön Slut.
-     * 
-    
 
-    public int calculate(ArrayList<Character> exp) {
-
-        int c = 0;
-        while (!exp.isEmpty()) {
-            char ch = exp.remove(0);
-            switch (ch) {
-                case '(':
-                    System.out.print("(");
-                    c = calculate(exp);
-
-                    break;
-                case ')':
-                    System.out.print(")");
-                    return c;
-
-                case '+':
-                    System.out.print("+");
-                    c = c + calculate(exp);
-
-                    break;
-                case '*':
-                    System.out.print("*");
-                    c = c * calculate(exp);
-
-                    break;
-                default:
-
-                    c = Character.getNumericValue(ch);
-                    System.out.print(c);
-
-            }
+    public long day18PartOne() {
+        long sum = 0;
+        int i = 0;
+        for (String string : expressions) {
+            i++;
+            long a = calculate(string);
+            sum += a;
+            System.out.println(i + ": " + a);
         }
 
-        return c;
-    }
- */
-    public int day18PartTwo() {
-        int sum = 0;
         return sum;
+    }
+
+    public long day18PartTwo() {
+
+        long sum = 0;
+        int i = 0;
+        for (String string : expressions) {
+            i++;
+            long a = calculate(string);
+            sum += a;
+            System.out.println(i + ": " + a);
+        }
+
+        return sum;
+
     }
 
     public static void main(String[] args) {
@@ -224,7 +175,9 @@ public class Day_18 {
  * 
  */
 
- /*
- That's not the right answer; your answer is too low. (You guessed 675399323.) [Return to Day 18]
-
-(You guessed 4970366619.) */
+/*
+ * That's not the right answer; your answer is too low. (You guessed 675399323.)
+ * [Return to Day 18]
+ * 
+ * (You guessed 4970366619.)
+ */
