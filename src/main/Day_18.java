@@ -24,9 +24,9 @@ public class Day_18 {
         inputScanner.close();
     }
 
-    public long calculate(String exp) {
+    public long calculate(String exp, boolean usePrecedence) {
 
-        String pf = ShuntingYard.postfix(exp);
+        String pf = ShuntingYard.postfix(exp, usePrecedence);
         long ans = ShuntingYard.calculatePostfix(pf);
         return ans;
     }
@@ -56,7 +56,7 @@ public class Day_18 {
             return (ops.containsKey(sub) && ops.get(sub).precedence <= ops.get(op).precedence);
         }
 
-        public static String postfix(String infix) {
+        public static String postfix(String infix, boolean usePrecedence) {
             infix = infix.replace(" ", "");
             StringBuilder output = new StringBuilder();
             Deque<Character> stack = new LinkedList<>();
@@ -64,9 +64,15 @@ public class Day_18 {
             for (Character token : infix.toCharArray()) {
                 // operator
                 if (ops.containsKey(token)) {
-                    // while ( ! stack.isEmpty() && isHigerPrec(token, stack.peek()))
-                    while (!stack.isEmpty() && ops.containsKey(stack.peek()))
-                        output.append(stack.pop());
+
+                    if (usePrecedence) {
+                        while (!stack.isEmpty() && isHigerPrec(token, stack.peek()))
+                            output.append(stack.pop());
+                    } else {
+                        while (!stack.isEmpty() && ops.containsKey(stack.peek()))
+                            output.append(stack.pop());
+                    }
+
                     stack.push(token);
 
                     // left parenthesis
@@ -133,7 +139,7 @@ public class Day_18 {
         int i = 0;
         for (String string : expressions) {
             i++;
-            long a = calculate(string);
+            long a = calculate(string, false);
             sum += a;
             System.out.println(i + ": " + a);
         }
@@ -147,7 +153,7 @@ public class Day_18 {
         int i = 0;
         for (String string : expressions) {
             i++;
-            long a = calculate(string);
+            long a = calculate(string, true);
             sum += a;
             System.out.println(i + ": " + a);
         }
@@ -168,6 +174,14 @@ public class Day_18 {
         System.out.println("Solution Part two: " + answer2 + "\n\n");
     }
 }
+/*
+Advent of code 2020, Day 18
+
+Solution Part one: 7293529867931
+Solution Part two: 60807587180737
+*/
+
+
 
 /*
  * 
