@@ -141,7 +141,6 @@ public class Day_18 {
             i++;
             long a = calculate(string, false);
             sum += a;
-            System.out.println(i + ": " + a);
         }
 
         return sum;
@@ -155,7 +154,6 @@ public class Day_18 {
             i++;
             long a = calculate(string, true);
             sum += a;
-            System.out.println(i + ": " + a);
         }
 
         return sum;
