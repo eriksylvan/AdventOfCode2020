@@ -1,22 +1,16 @@
 package main;
 
-import static org.junit.jupiter.api.Assumptions.assumeFalse;
-
-import java.text.CollationElementIterator;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+
+
 
 /**
  * Day_19
@@ -24,7 +18,7 @@ import java.util.stream.Collectors;
 public class Day_19 {
 
     public String inputFile = "input\\input_19.txt";
-    HashMap<Integer, String> rules = new HashMap<Integer, String>();
+    TreeMap<Integer, String> rules = new TreeMap<Integer, String>();
     List<String> message = new ArrayList<String>();
 
     public void getInputData() {
@@ -39,6 +33,7 @@ public class Day_19 {
                 break;
             String[] r = str.split(": ");
             rules.put(Integer.parseInt(r[0]), r[1]);
+            //Map<Integer, String> sortedMap = new TreeMap<Integer, String>(rules);
         }
         // read message
         while (inputScanner.hasNextLine()) {

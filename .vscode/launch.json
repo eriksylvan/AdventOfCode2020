@@ -1,0 +1,43 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Day_21",
+            "request": "launch",
+            "mainClass": "main.Day_21",
+            "projectName": "AdventOfCode2020_d7483a79"
+        },
+        {
+            "type": "java",
+            "name": "Launch Day20_JurassicJigsaw",
+            "request": "launch",
+            "mainClass": "main.Day20_JurassicJigsaw",
+            "projectName": "AdventOfCode2020_d7483a79"
+        },
+        {
+            "type": "java",
+            "name": "Launch Day_20",
+            "request": "launch",
+            "mainClass": "main.Day_20",
+            "projectName": "AdventOfCode2020_d7483a79"
+        },
+        {
+            "type": "java",
+            "name": "Launch Puzzle20",
+            "request": "launch",
+            "mainClass": "main.Puzzle20",
+            "projectName": "AdventOfCode2020_d7483a79"
+        },
+        {
+            "type": "java",
+            "name": "Launch Day_19",
+            "request": "launch",
+            "mainClass": "main.Day_19",
+            "projectName": "AdventOfCode2020_d7483a79"
+        }
+    ]
+}
