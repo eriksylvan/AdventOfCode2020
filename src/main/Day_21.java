@@ -102,7 +102,6 @@ public class Day_21 {
         // hitta food f som INTE innehåller ingrediensen ing
         // ta bort alla f's allergener från ing
 
-
         System.out.println("\nIgredients under reduction:");
         for (Map.Entry<String, ArrayList<String>> ia : this.ingredientAllergent.entrySet()) {
             String ing = ia.getKey();
@@ -115,7 +114,7 @@ public class Day_21 {
             }
         }
 
-       // mapIngredientAllergent();
+        // mapIngredientAllergent();
         System.out.println("\nIgredients after reduction:");
         for (Map.Entry<String, ArrayList<String>> ia : this.ingredientAllergent.entrySet()) {
             System.out.println(ia.getKey() + " -> " + ia.getValue().toString());
@@ -124,7 +123,7 @@ public class Day_21 {
         // hitta ingredienser utan allergener
         List<String> nonAllergic = new ArrayList<String>();
         for (Map.Entry<String, ArrayList<String>> ia : this.ingredientAllergent.entrySet()) {
-            if (ia.getValue().size()==0)
+            if (ia.getValue().size() == 0)
                 nonAllergic.add(ia.getKey());
         }
         System.out.println("\nNon allergic ingredients:");
@@ -133,21 +132,32 @@ public class Day_21 {
         // räkna hur många gånger dessa ingedienser förekommer i all food
         int count = 0;
         for (Food f : foods) {
-            count += f.ingredients.stream()
-            .filter(nonAllergic::contains).count();
+            count += f.ingredients.stream().filter(nonAllergic::contains).count();
         }
 
         return count;
     }
 
-    public int day21PartTwo() {
-        int sum = 0;
-        return sum;
+    public String day21PartTwo() {
+        // Assuming Part 1 was run first
+
+        // Removing empty
+        System.out.println("\nonly allergents");
+        for (Map.Entry<String, ArrayList<String>> ia : this.ingredientAllergent.entrySet()) {
+            if (ia.getValue().size() != 0)
+            System.out.println(ia.getKey() + " -> " + ia.getValue().toString());
+            
+        }
+  
+    
+
+    int sum = 0;return"abc,def";
     }
 
     public static void main(String[] args) {
         Day_21 day_21 = new Day_21();
-        int answer1, answer2;
+        int answer1;
+        String answer2;
         day_21.getInputData();
         answer1 = day_21.day21PartOne();
 
@@ -158,11 +168,28 @@ public class Day_21 {
     }
 }
 
+/*
+ * Advent of code 2020, Day 21
+ * 
+ * Solution Part one: 2282 
+ * Solution Part two: vrzkz,zjsh,hphcb,mbdksj,vzzxl,ctmzsr,rkzqs,zmhnj
+ */
+
 
 
 /*
-Advent of code 2020, Day 21
 
-Solution Part one: 2282
-Solution Part two: 0
+Maulually solution:
+--------------------
+zmhnj -> [soy, eggs, dairy]
+vzzxl -> [eggs, peanuts]
+ctmzsr -> [soy, eggs, sesame]
+rkzqs -> [shellfish, soy, eggs, sesame, fish, dairy, peanuts]
+hphcb -> [fish, peanuts]
+vrzkz -> [dairy]
+mbdksj -> [nuts]
+zjsh -> [nuts, eggs, dairy]
+
+vrzkz,zjsh,hphcb,mbdksj,vzzxl,ctmzsr,rkzqs,zmhnj
+
 */

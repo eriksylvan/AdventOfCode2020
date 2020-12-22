@@ -27,8 +27,8 @@ public class Day_21_test extends TestCase {
         day_21.inputFile = "input\\input_21_test.txt";
         day_21.getInputData();
         
-        int expected = 5    ;
-        int actual = day_21.day21PartTwo();
+        String expected = "mxmxvkd,sqjhc,fvjkl";
+        String actual = day_21.day21PartTwo();
         assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
     }
 
@@ -41,5 +41,16 @@ public class Day_21_test extends TestCase {
         assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
     }
 
+
+    @Test
+    public void testSolutionPartTwo() {
+    
+        day_21.getInputData();
+        
+        String expected = "vrzkz,zjsh,hphcb,mbdksj,vzzxl,ctmzsr,rkzqs,zmhnj";
+        String actual = day_21.day21PartTwo();
+        assertEquals("expected: " + expected + " actual: " + actual, expected, actual);
+    }
+    
 }
 
